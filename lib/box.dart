@@ -10,14 +10,14 @@ class Box extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: Colors.white10),
       ),
       child: InkWell(
           onTap: onTap,
           child: Center(
             child: Text(
               symbol,
-              style: TextStyle(fontSize: 30, color: Colors.blue),
+              style: TextStyle(fontSize: 40, color: Colors.white),
             ),
           )),
     );

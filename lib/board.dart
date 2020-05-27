@@ -38,6 +38,7 @@ class BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white10,
       appBar: AppBar(
         title: Text(TITLE),
       ),
@@ -61,7 +62,7 @@ class BoardState extends State<Board> {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(35.0),
+      padding: const EdgeInsets.fromLTRB(20, 150,20,150),
       child: GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
