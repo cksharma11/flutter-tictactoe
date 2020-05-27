@@ -32,10 +32,22 @@ class BoardState extends State<Board> {
       return board[position] != EMPTY_POSITION;
     }
 
-    void setNewState(position) {
+    void addPositionToPlayerMoves(position) {
       currentPlayerIndex == 0 ? xMoves.add(position) : oMoves.add(position);
+    }
+
+    void placeSymbolOnBoard(position) {
       board[position] = symbols[currentPlayerIndex];
+    }
+
+    void updateTurn() {
       currentPlayerIndex = 1 - currentPlayerIndex;
+    }
+
+    void setNewState(position) {
+      addPositionToPlayerMoves(position);
+      placeSymbolOnBoard(position);
+      updateTurn();
     }
 
     void onTap(position) {
@@ -62,8 +74,8 @@ class BoardState extends State<Board> {
       ],
     );
   }
+}
 
-  Widget _errorSnakeBar() {
-    return SnackBar(content: Text(PLACE_NOT_EMPTY_ERROR));
-  }
+Widget _errorSnakeBar() {
+  return SnackBar(content: Text(PLACE_NOT_EMPTY_ERROR));
 }
