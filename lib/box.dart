@@ -9,13 +9,15 @@ class Box extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all()),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue),
+      ),
       child: InkWell(
           onTap: onTap,
           child: Center(
             child: Text(
               symbol,
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, color: Colors.blue),
             ),
           )),
     );

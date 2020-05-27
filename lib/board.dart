@@ -60,18 +60,21 @@ class BoardState extends State<Board> {
       });
     }
 
-    return GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        childAspectRatio: 1,
+    return Padding(
+      padding: const EdgeInsets.all(35.0),
+      child: GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1,
+        ),
+        children: <Widget>[
+          for (var position = 1; position <= 9; position++)
+            Box(
+              onTap: () => onTap(position),
+              symbol: board[position],
+            ),
+        ],
       ),
-      children: <Widget>[
-        for (var position = 1; position <= 9; position++)
-          Box(
-            onTap: () => onTap(position),
-            symbol: board[position],
-          ),
-      ],
     );
   }
 }
