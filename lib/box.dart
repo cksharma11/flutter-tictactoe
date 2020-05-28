@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/constants.dart';
 
 class Box extends StatelessWidget {
   Box({@required this.onTap, @required this.symbol});
@@ -10,14 +11,15 @@ class Box extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: Colors.white),
       ),
       child: InkWell(
           onTap: onTap,
           child: Center(
             child: Text(
               symbol,
-              style: TextStyle(fontSize: 40, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 40, color: symbol == X ? Colors.red : Colors.white),
             ),
           )),
     );
