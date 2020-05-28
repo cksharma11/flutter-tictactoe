@@ -12,6 +12,13 @@ class BoardState extends State<Board> {
   final oMoves = <int>{};
   var board = INITIAL_BOARD;
   var currentPlayerIndex = 0;
+  var isFinished = false;
+
+  bool hasWon() {
+    var moves = currentPlayerIndex == 0 ? xMoves : oMoves;
+    return WINNING_COMBINATIONS.any(
+        (combination) => combination.every((move) => moves.contains(move)));
+  }
 
   bool isPositionEmpty(position) {
     return board[position] != EMPTY_POSITION;
@@ -32,6 +39,9 @@ class BoardState extends State<Board> {
   void setNewState(position) {
     addPositionToPlayerMoves(position);
     placeSymbolOnBoard(position);
+    if (hasWon()) {
+      Scaffold.of(context).showSnackBar(_errorSnakeBar());
+    }
     updateTurn();
   }
 
@@ -62,7 +72,7 @@ class BoardState extends State<Board> {
     }
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 150,20,150),
+      padding: const EdgeInsets.fromLTRB(20, 150, 20, 150),
       child: GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
